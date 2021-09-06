@@ -1,0 +1,8 @@
+{
+  "name": "nbveiculos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nathanbraz/nbveiculos.git",
+  "author": "Nathan Braz <nathanbrz09@gmail.com>",
+  "license": "MIT"
+}
