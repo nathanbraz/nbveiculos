@@ -5,6 +5,15 @@ import { CreateSpecificationDTO, ISpecificationsRepository } from "../ISpecifica
 class SpecificationsRepository implements ISpecificationsRepository{
   private specifications: Specification[];
 
+  private static INSTANCE: SpecificationsRepository;
+
+  public static getInstance(): SpecificationsRepository {
+    if(!SpecificationsRepository.INSTANCE){
+      this.INSTANCE = new SpecificationsRepository();
+    }
+    return SpecificationsRepository.INSTANCE;
+  }
+
   constructor(){
     this.specifications = [];
   }
@@ -19,6 +28,10 @@ class SpecificationsRepository implements ISpecificationsRepository{
     });
 
     this.specifications.push(specification);
+  }
+
+  list(): Specification[]{
+    return this.specifications;
   }
 
   findByName(name: string): Specification {
