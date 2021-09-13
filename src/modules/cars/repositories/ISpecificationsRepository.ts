@@ -5,9 +5,10 @@ type CreateSpecificationDTO = {
   description: string;
 }
 
-interface ISpecificationRepository {
+interface ISpecificationsRepository {
   create({ name, description }: CreateSpecificationDTO): void;
   findByName(name: string) : Specification;
+  list(): Specification[];
 }
 
-export { ISpecificationRepository, CreateSpecificationDTO };
+export { ISpecificationsRepository, CreateSpecificationDTO };

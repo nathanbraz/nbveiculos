@@ -5,10 +5,10 @@ type CreateCategoryDTO = {
   description: string;
 }
 
-interface ICategoryRepository {
+interface ICategoriesRepository {
   create({ name, description }: CreateCategoryDTO): void;
   findByName(name: string): Category;
   list(): Category[];
 }
 
-export { ICategoryRepository, CreateCategoryDTO };
+export { ICategoriesRepository, CreateCategoryDTO };
