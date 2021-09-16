@@ -7,5 +7,43 @@
     "contact": {
       "email": "nathanbrz09@gmail.com"
     }
+  },
+  "paths": {
+    "/categories": {
+      "post": {
+        "tags": ["Categoria"],
+        "summary": "Criar categoria",
+        "description": "Cadastro de uma categoria",
+        "requestBody": {
+          "content": {
+            "application/json":{
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Categoria Teste",
+                  "description": "Testando a categoria"  
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Categoria já existente"
+          }
+        }
+      }
+    }
   }
 }
