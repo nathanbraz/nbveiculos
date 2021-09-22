@@ -14,10 +14,10 @@ class User {
   username: string;
 
   @Column()
-  password: string;
+  email: string;
 
   @Column()
-  email: string;
+  password: string;
 
   @Column()
   driver_license: string;
