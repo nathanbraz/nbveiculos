@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from 'jsonwebtoken';
+import { AppError } from "../errors/AppError";
 import { UsersRepository } from "../modules/accounts/repositories/implementations/UsersRepository";
 
 type Payload = {
@@ -10,7 +11,7 @@ export async function ensureAuthenticated(request: Request, response: Response, 
   const authHeader = request.headers.authorization;
 
   if(!authHeader){
-    throw new Error("Sem permissão");
+    throw new AppError("Sem permissão", 401);
   }
 
   const [, token] = authHeader.split(" ");
@@ -22,11 +23,11 @@ export async function ensureAuthenticated(request: Request, response: Response, 
     const user = await usersRepository.findById(user_id);
 
     if(!user) {
-      throw new Error("Usuário inexistente");
+      throw new AppError("Usuário inexistente", 401);
     }
 
     next();
   } catch {
-    throw new Error("Token inválido");
+    throw new AppError("Token inválido", 401);
   }
 }
